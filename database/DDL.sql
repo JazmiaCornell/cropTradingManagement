@@ -5,8 +5,12 @@
         JAZMIA CORNELL, BRADLEY SOMMER
 */
 
+
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
+
+-- start transaction
+START TRANSACTION;
 
 -- Drop Tables
 DROP TABLE IF EXISTS Trades;
@@ -175,6 +179,8 @@ VALUES
     (5, 5, 150, 5, 450, '2024-03-15', 2),  -- Denied trade
     (1, 5, 125, 6, 350, '2024-03-20', 0);  -- Pending trade
 
-
-SET FOREIGN_KEY_CHECKS=1;
+-- commit transaction
 COMMIT;
+
+-- re-enable foreign key checks
+SET FOREIGN_KEY_CHECKS=1;
