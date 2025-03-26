@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS Resources;
 -- Create table for ResourceTypeS
 CREATE TABLE ResourceTypes (
     type_id INT NOT NULL AUTO_INCREMENT,
-    type_name VARCHAE(50) NOT NULL,
+    type_name VARCHAR(50) NOT NULL,
     PRIMARY KEY (type_id)
 );
 
