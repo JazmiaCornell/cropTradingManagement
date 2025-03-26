@@ -4,6 +4,7 @@
 // Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/
 
 // SETUP
+require("dotenv").config();
 var express = require("express"); // using express for the web server
 var app = express(); // instantiate an express object to interact with the server in our code
 app.use(express.json());
