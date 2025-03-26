@@ -23,6 +23,7 @@ CREATE TABLE ResourceTypes (
 );
 
 
+/*
 -- Create table for Resources
 CREATE TABLE Resources (
     resource_id int NOT NULL AUTO_INCREMENT,
@@ -178,6 +179,7 @@ VALUES
     (4, 4, 200, 4, 600, '2024-03-01', 1),  -- Completed trade
     (5, 5, 150, 5, 450, '2024-03-15', 2),  -- Denied trade
     (1, 5, 125, 6, 350, '2024-03-20', 0);  -- Pending trade
+*/
 
 -- commit transaction
 COMMIT;
