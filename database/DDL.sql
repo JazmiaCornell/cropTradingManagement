@@ -5,6 +5,7 @@
         JAZMIA CORNELL, BRADLEY SOMMER
 */
 
+/*
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
@@ -17,6 +18,8 @@ DROP TABLE IF EXISTS Crops;
 DROP TABLE IF EXISTS Vaults;
 DROP TABLE IF EXISTS ResourceTypes;
 DROP TABLE IF EXISTS Resources;
+
+*/
 
 -- Create table for ResourceTypeS
 CREATE TABLE ResourceTypes (
@@ -96,9 +99,10 @@ CREATE TABLE Trades (
     FOREIGN KEY (crop_id) REFERENCES Crops(crop_id) ON DELETE SET NULL
 );
 
+/*
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
-
+*/
 -- Add sample data below here:
 
 -- ResourceTypes (categories of supplies other vaults might trade)
