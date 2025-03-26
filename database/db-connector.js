@@ -5,6 +5,7 @@ var pool = mysql.createPool({
   user: process.env.MYSQLUSER,
   password: process.env.MYSQLPASSWORD,
   database: process.env.MYSQL_DATABASE,
+  url: process.env.MYSQL_URL,
   connectionLimit: 10, // Optional: limit concurrent connections
 });
 
