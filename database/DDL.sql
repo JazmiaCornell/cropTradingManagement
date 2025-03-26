@@ -5,12 +5,6 @@
         JAZMIA CORNELL, BRADLEY SOMMER
 */
 
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- start transaction
-START TRANSACTION;
-
 -- Drop Tables
 DROP TABLE IF EXISTS Trades;
 DROP TABLE IF EXISTS Greenhouses_Crops;
@@ -98,6 +92,13 @@ CREATE TABLE Trades (
     FOREIGN KEY (resource_id) REFERENCES Resources(resource_id) ON DELETE SET NULL,
     FOREIGN KEY (crop_id) REFERENCES Crops(crop_id) ON DELETE SET NULL
 );
+
+
+SET FOREIGN_KEY_CHECKS=0;
+SET AUTOCOMMIT = 0;
+
+-- start transaction
+START TRANSACTION;
 
 -- Add sample data below here:
 
