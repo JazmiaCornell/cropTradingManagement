@@ -5,7 +5,7 @@
         JAZMIA CORNELL, BRADLEY SOMMER
 */
 
--- Drop Tables
+/* Drop Tables
 DROP TABLE IF EXISTS Trades;
 DROP TABLE IF EXISTS Greenhouses_Crops;
 DROP TABLE IF EXISTS Dwellers;
@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS Greenhouses;
 DROP TABLE IF EXISTS Crops;
 DROP TABLE IF EXISTS Vaults;
 DROP TABLE IF EXISTS ResourceTypes;
-DROP TABLE IF EXISTS Resources;
+DROP TABLE IF EXISTS Resources; */
 
 -- Create table for ResourceTypeS
 CREATE TABLE ResourceTypes (
