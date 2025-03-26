@@ -1,6 +1,6 @@
 // Get an instance of mysql we can use in the app
 
-var mysql = require("mysql");
+var mysql = require("mysql2");
 
 // Create a 'connection pool' using the provided credentials
 
