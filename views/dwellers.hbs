@@ -1,0 +1,95 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Dwellers</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+            <h1>Vault 100 Dwellers</h1>
+            <p>Here you can view all available dwellers inside Vault 100 and also add new dwellers as they pop up!</p>
+        </div>
+
+{{!-- Create dwellers table --}}
+<table id="dwellers-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Dweller ID</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Work Location</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the dweller_id, dweller_name, birthdate, work_location, and role in order --}}
+        {{#each data}}
+        <tr data-value={{this.dweller_id}}>
+            <td>{{this.dweller_id}}</td>
+            <td>{{this.dweller_name}}</td>
+            <td>{{this.birthdate}}</td>
+            <td>{{this.work_location}}</td>
+            <td>{{this.role}}</td>   
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+<!-- /views/dwellers.hbs -->
+<div class="form">
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Dweller</h2>
+<p>To add a new dweller, please enter the dweller's information below and click 'Submit'!</p>
+<form id="add-dwellers-form-ajax">
+    <label for="input-dweller-name">Dweller's Name: </label>
+    <input type="text" name="input-dweller-name" id="input-dweller-name" required placeholder="Enter dweller's name here">
+
+    <label for="input-birthdate">Birthdate: </label>
+    <input type="date" name="input-birthdate" id="input-birthdate" required placeholder="Enter birthdate">
+
+    <label for="input-work-location">Work Location: </label>
+    <select name="input-work-location" id="input-work-location">
+        <option>Select Work Location</option>
+        {{#each greenhouses}}
+        <option value="{{this.greenhouse_id}}">{{this.greenhouse_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-role">Role: </label>
+    <input type="text" name="input-role" id="input-role" required placeholder="Enter role">
+
+    <input type="submit">
+</form>
+</div>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_dwellers.js"></script>
+
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Resource Types</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+           <h1>Vault 100 Available Resource Types</h1>
+            <p>Here you can view all resource types available to Vault 100 for trade. You can also enter a new resource type.</p>
+        </div>
+
+{{!-- Creates resourceTypes table --}}
+<table id="resource-types-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Type ID</th>
+            <th>Type Name</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the type_id and type_name in order --}}
+        {{#each data}}
+        <tr data-value={{this.type_id}}>
+            <td>{{this.type_id}}</td>
+            <td>{{this.type_name}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- /views/resourceTypes.hbs -->
+<div class="form">
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Resource Type</h2>
+<p>To add a new resource type, please enter the type information below and click 'Submit'!</p>
+<form id="add-resource-types-form-ajax">
+    <label for="input-type-name">Resource Type Name: </label>
+    <input type="text" name="input-type-name" id="input-type-name" required placeholder="Enter Type name here">
+
+    <input type="submit">
+</form>
+</div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_resourceTypes.js"></script> 
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</body>
+</html>
+

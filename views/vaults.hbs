@@ -1,0 +1,79 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Vaults</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+           <h1>Vault 100 Trading Partners</h1>
+            <p>Here you can view all trading partners available to Vault 100. You can add new trading partners as they become available.</p>
+        </div>
+
+        {{!-- Create vaults table --}}
+        <table id="vaults-table">
+
+        {{!-- Header section --}}
+            <thead>
+
+            {{!-- For just the first row, we print each key of the row object as a header cell so we
+            know what each column means when the page renders --}}
+                <tr> 
+                    <th>Vault ID</th>
+                    <th>Overseer's Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+
+            {{!-- Body section --}}
+            <tbody>
+
+                {{!-- For each row, print the vault_id, overseer_name, and location in order --}}
+                {{#each data}}
+                <tr data-value={{this.vault_id}}>
+                    <td>{{this.vault_id}}</td>
+                    <td>{{this.overseer_name}}</td>
+                    <td>{{this.location}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <!-- /views/vaults.hbs -->
+        <div class="form">
+        {{!-- Form to add a record to the table  --}}
+            <h2>Add a New Trading Partner</h2>
+            <p>To add a new trading partner, please enter the vault's information below and click 'Submit'!</p>
+            <form id="add-vaults-form-ajax">
+                <label for="input-overseer-name">Overseer Name: </label>
+                <input type="text" name="input-overseer-name" id="input-overseer-name" required placeholder="Enter Overseer's name here">
+    
+                <label for="input-location">Location: </label>
+                <input type="text" name="input-location" id="input-location" required placeholder="Enter Vault number">
+
+                <input type="submit">
+            </form>
+        </div>
+
+        {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+        <script src="./js/add_vaults.js"></script> 
+        <footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+    </body>
+</html>
+

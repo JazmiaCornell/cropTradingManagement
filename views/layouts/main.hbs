@@ -1,0 +1,188 @@
+<!-- //Citation Scope: Styling inspiration
+// Date: 12/06/2024
+// Orginality: Based on
+// Source: https://medium.com/@dovid11564/using-css-animations-to-mimic-the-look-of-a-crt-monitor-3919de3318e2 
+// Author: Dovid Edelkopf-->
+
+<!-- main.hbs-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vault 100 Crop Trading Management System</title>
+    <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #000;
+                color: #00ff00;
+                font-family: "Courier New", monospace;
+                font-size: 25px;
+                text-align: center;
+                text-shadow: 0 0 10px #00ff00;
+            }
+
+            a {
+                text-align: center;
+                color: #00ff00;
+                text-decoration: none;
+                font-size: 20px;
+            }
+            a:hover{
+                border-bottom: #00ff00 1px dashed;
+            }
+
+            .nav-bar {
+                padding: 20px;
+                border-bottom: #00ff00 1px dashed;
+            }
+
+
+            /* table */
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: #00ff00 2px solid;
+            }
+
+            th, td {
+                border: #00ff00 1px solid;
+                padding: 10px 20px;
+                text-align: center;
+            }
+
+            th {
+                text-shadow: none;
+                font-size: 22px;
+            }
+
+            td {
+                vertical-align: middle;
+                font-size: 20px;
+                padding: 10px 20px;
+            }
+
+            .container a {
+                border: none;
+            }
+
+            .container p {
+                font-size: 20px;
+            }
+
+            button {
+                width: 100%;
+                max-width: 150px;
+                background-color: #000000;
+                border: none;
+                color: #00ff00;
+                text-align: center;
+                font-size: 20px;
+                font-family: "Courier New", monospace;
+                text-shadow: 0 0 10px #00ff00;
+                padding: 10px;
+                
+            }
+
+            button:hover {
+                background-color: white;
+                color: black;
+                text-shadow: none;
+            }
+
+            /* form */
+
+            h2 {
+                font-size: 30px;
+                margin-top: 30px;
+                text-shadow: none;
+            }
+
+            
+            p {
+                font-size: 20px;
+            } 
+
+            .form {
+                margin: 40px 0;
+                border: #00ff00 2px solid;
+            }
+
+            form {
+                background-color: #111;
+                padding: 20px;
+                border: #00ff00 2px solid;
+                width: 50%;
+                margin: 20px auto;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 8px;
+                color: #00ff00;
+                text-shadow: none;
+            }
+
+            input {
+                width: 100%;
+                text-align: left;
+                padding: 12px;
+                margin: 10px 0;
+                border: 2px solid black;
+                font-size: 18px;
+                font-family: "Courier New", monospace;
+
+            }
+
+
+            input[type="submit"] {
+                width: 100%;
+                padding: 12px;
+                background-color: #000;
+                border: #00ff00 2px solid;
+                color: #00ff00;
+                font-size: 20px;
+                font-family: "Courier New", monospace;
+                text-shadow: 0 0 10px #00ff00;
+                margin-top: 20px;
+            } 
+
+            *:focus {
+                outline: none;
+            }
+
+            input:hover {
+                background-color: white;
+                border: black 2px solid;
+                color: black;
+                text-shadow: none;
+            }
+
+            select {
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border: black 2px solid; 
+            font-size: 18px; 
+            font-family: "Courier New", monospace; 
+            }
+
+        footer {
+                padding-top: 10px;
+            }
+    </style>
+</head>
+<body>
+
+    {{{body}}}
+
+</body>
+</html>

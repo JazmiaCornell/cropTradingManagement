@@ -1,0 +1,79 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Greenhouses</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+            <h1>Vault 100 Greenhouses</h1>
+            <p>Here you can view and add all the greenhouses in Vault 100.</p>
+        </div>
+
+        {{!-- Create greenhouses table --}}
+        <table id="greenhouses-table">
+
+        {{!-- Header section --}}
+        <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+            <tr> 
+                <th>Greenhouse ID</th>
+                <th>Crop Yield</th>
+                <th>Delete Greenhouse</th>
+            </tr>
+        </thead>
+
+        {{!-- Body section --}}
+        <tbody>
+
+            {{!-- For each row, print the greenhouse_id, crop_yield in order --}}
+            {{#each data}}
+            <tr data-value={{this.greenhouse_id}}>
+                <td>{{this.greenhouse_id}}</td>
+                <td>{{this.crop_yield}}</td>
+                <td><button onclick="deleteGreenhouses({{this.greenhouse_id}})">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <script src="./js/delete_greenhouses.js"></script>
+
+    <!-- /views/greenhouses.hbs -->
+    <div class="form">
+    {{!-- Form to add a record to the table  --}}
+    <h2>Add a New Greenhouse</h2>
+    <p>To add a new greenhouse, please enter the greenhouse information below and click 'Submit'!</p>
+    <form id="add-greenhouses-form-ajax">
+        <label for="input-crop-yield">Crop Yield: </label>
+        <input type="text" name="input-crop-yield" id="input-crop-yield" required placeholder="Enter number here">
+
+
+        <input type="submit">
+    </form>
+    </div>
+
+    {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+    <script src="./js/add_greenhouses.js"></script>
+    <footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+    </body>
+</html>
+

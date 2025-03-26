@@ -1,0 +1,128 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Greenhouses Crops</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+            <h1>Vault 100 Greenhouses_Crops</h1>
+            <p>Here you can view, add, update, and delete greenhouses and the crops associated with them in Vault 100.</p>
+        </div>
+
+{{!-- Create greenhouses_crops table --}}
+<table id="greenhouses-crops-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Greenhouse_Crop ID</th>
+            <th>Crop Name</th>
+            <th>Greenhouse ID</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the greenhouse_crop_id, crop_name, greenhouse_id in order --}}
+        {{#each data}}
+        <tr data-value={{this.greenhouse_crop_id}}>
+            <td>{{this.greenhouse_crop_id}}</td>
+            <td>{{this.crop_name}}</td>
+            <td>{{this.greenhouse_id}}</td>
+            <td><button onclick="deleteGreenhousesCrops({{this.greenhouse_crop_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/delete_greenhouses_crops.js"></script>
+
+<!-- /views/greenhouses_crops.hbs -->
+<div class="form">
+{{!-- Form to add a record to the table  --}}
+<h2>Add a Crop to Greenhouse</h2>
+<p>To add a crop to greenhouse, please select crop name and greenhouse id below and click 'Submit'!</p>
+
+<form id="add-greenhouses-crops-form-ajax">
+    <select name="input-greenhouse-id" id="input-greenhouse-ajax">
+        <option value="">Select a Greenhouse</option>
+        {{#each greenhouses}}
+        <option value="{{this.greenhouse_id}}">{{this.greenhouse_id}}</option>
+        {{/each}}
+    </select>
+
+    <select name="input-crop-id" id="input-crop-ajax">
+        <option value="">Select a Crop</option>
+        {{#each crops}}
+        <option value="{{this.crop_id}}">{{this.crop_name}}</option>
+        {{/each}}
+    </select>
+    
+    <input type="submit">
+</form>
+</div>
+
+<script src="./js/add_greenhouses_crops.js"></script>
+
+<!-- update greenhouses_crops -->
+<div class="form">
+<h2>Updating Greenhouses_Crops Form</h2>
+<p>To update a specific greenhouse and the crops currently growing within it, select the greenhouse_crop_id from the drop-down menu on the left, the crop name from the drop down menu in the middle, and the greenhouse id from the drop down menu on the right.</p>
+<form id="update-greenhouses-crops-form-ajax">
+
+    <label for="input-greenhouse-crop-update">Greenhouse_Crop ID:</label>
+    <select name="input-greenhouse-crop-update" id="input-greenhouse-crop-update">
+        <option value=""></option>
+        {{#each data}}
+        <option value="{{this.greenhouse_crop_id}}">{{this.greenhouse_crop_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-crop-update">Crop:</label>
+    <select name="input-crop-update" id="input-crop-update">
+        <option value=""></option>
+        {{#each crops}}
+        <option value="{{this.crop_id}}">{{this.crop_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-greenhouse-update">Greenhouse:</label>
+    <select name="input-greenhouse-update" id="input-greenhouse-update">
+        <option value=""></option>
+        {{#each greenhouses}}
+        <option value="{{this.greenhouse_id}}">{{this.greenhouse_id}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+
+</form>
+</div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/update_greenhouses_crops.js"></script>
+
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</body>
+</html>

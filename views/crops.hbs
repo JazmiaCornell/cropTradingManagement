@@ -1,0 +1,84 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Crops</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+            <h1>Vault 100 Crops</h1>
+            <p>Here you can view all available crops inside Vault 100 and add new crops as they pop up!</p>
+        </div>
+
+{{!-- Create crops table --}}
+<table id="crops-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Crop ID</th>
+            <th>Crop Name</th>
+            <th>Average Yield</th>
+            <th>Delete Crop</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the crop_id, crop_name, avg_yield, and delete button in order --}}
+        {{#each data}}
+        <tr data-value={{this.crop_id}}>
+            <td>{{this.crop_id}}</td>
+            <td>{{this.crop_name}}</td>
+            <td>{{this.avg_yield}}</td>
+            <td><button onclick="deleteCrops({{this.crop_id}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<script src="./js/delete_crops.js"></script>
+
+<!-- /views/crops.hbs -->
+
+<div class="form">
+{{!-- Form to add a crop to the table  --}}
+<h2>Add a New Crop</h2>
+<p>To add a new crop, please enter the crop information below and click 'Submit'!</p>
+<form id="add-crops-form-ajax">
+    <label for="input-crop-name">Crop Name: </label>
+    <input type="text" name="input-crop-name" id="input-crop-name" required placeholder="Enter crop name here">
+    
+    <label for="input-avg-yield">Average Yield: </label>
+    <input type="text" name="input-avg-yield" id="input-avg-yield" required placeholder="Enter number here">
+
+    <input type="submit">
+</form>
+</div>
+
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_crops.js"></script>
+</body>
+</html>

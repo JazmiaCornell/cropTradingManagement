@@ -1,0 +1,89 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!-- index.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <style>
+            td p {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body class="crt">
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <h1>Vault 100 Crop Trading Management System</h1>
+        <div>
+            <p>Welcome to the Vault 100 Crop Trading Management System. Your one-stop-shop for all things trade.</p> <!-- Here you can enter proposed, pending, and denied trades between Vault 100 and our neighboring Vaults. </p> -->
+            </p>Select an option below based on your needs:</p>
+        </div>
+        <div class="container">
+            <table>
+                <tr>
+                    <td><a href="/crops">
+                        <button>Crops</button>
+                    </a></td>
+                    <td><p> Available crops within Vault 100.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/dwellers">
+                        <button>Dwellers</button>
+                    </a></td>
+                    <td><p>Vault dwellers that work and live within Vault 100.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/greenhouses">
+                        <button>Greenhouses</button>
+                    </a></td>
+                    <td><p>Management of greenhouses within Vault 100.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/greenhouses_crops">
+                        <button>Greenhouses Crops</button>
+                    </a></td>
+                    <td><p>Management of greenhouses and which crops are grown within them.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/vaults">
+                        <button>Vaults</button>
+                    </a></td>
+                    <td><p>Management of Vault 100's trading partners.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="resources">
+                        <button>Resources</button>
+                    </a></td>
+                    <td><p>Management of resources available for trade outside Vault 100.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/resourcetypes">
+                        <button>Resource Types</button>
+                    </a></td>
+                    <td><p>Management of resource types available for trade outside Vault 100.</p></td>
+                </tr>
+                <tr>
+                    <td><a href="/trades">
+                        <button>Trades</button>
+                    </a></td>
+                    <td><p>Management of trades pending, completed, or denied for Vault 100.</p></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</html>

@@ -1,0 +1,84 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Resources</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+           <h1>Vault 100 Available Resources</h1>
+            <p>Here you can view all resources available to Vault 100 for trade. You can also enter a new resource.</p>
+        </div>
+
+{{!-- Create resources table --}}
+<table id="resources-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Resource ID</th>
+            <th>Resource Name</th>
+            <th>Resource Type</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the resource_id, resource_name, resource_type in order --}}
+        {{#each data}}
+        <tr data-value={{this.resource_id}}>
+            <td>{{this.resource_id}}</td>
+            <td>{{this.resource_name}}</td>
+            <td>{{this.resource_type}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+<!-- /views/resources.hbs -->
+<div class="form">
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Resource</h2>
+<p>To add a new resource, please enter the resources information below and click 'Submit'!</p>
+<form id="add-resources-form-ajax">
+    <label for="input-resource-name">Resource Name: </label>
+    <input type="text" name="input-resource-name" id="input-resource-name" required placeholder="Enter Resource name here">
+
+    <label for="input-resource-type">Resource Type: </label>
+    <select name="input-resource-type" id="input-resource-type">
+        <option>Select Resouce Type</option>
+        {{#each resourceTypes}}
+        <option value="{{this.type_id}}">{{this.type_name}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>
+</div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_resources.js"></script> 
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</body>
+</html>
+

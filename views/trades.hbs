@@ -1,0 +1,184 @@
+<!-- //Citation Scope: Creating views for database and implementing CRUD dynamically via Asynchronous JS and XML, AJAX
+// Date: 12/07/2024
+// Orginality: Adapted
+// Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Trades</title>
+    </head>
+    <body>
+        <div class="nav-bar">
+            <a href="./">Home</a> |
+            <a href="./crops">Crops</a> |
+            <a href="./dwellers">Dwellers</a> |
+            <a href="./greenhouses">Greenhouses</a> |
+            <a href="./greenhouses_crops">Greenhouses Crops</a> |
+            <a href="./vaults">Vaults</a> |
+            <a href="./resources">Resources</a> |
+            <a href="./resourcetypes">Resource Types</a> |
+            <a href="./trades">Trades</a>
+        </div>
+        <div>
+            <h1>Vault 100 Trades</h1>
+            <p>Here you can view all Vault 100 pending, confirmed and denied trades.</p>
+        </div>
+
+{{!-- Create trades table --}}
+<table id="trades-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr> 
+            <th>Trade ID</th>
+            <th>Vault ID</th>
+            <th>Resource ID</th>
+            <th>Resource Amount</th>
+            <th>Crop ID</th>
+            <th>Crop Amount</th>
+            <th>Trade Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the trade_id, vault_id, resource_id, resource_amount, crop_id, crop_amount, trade_date, and status in order --}}
+        {{#each data}}
+        <tr data-value={{this.trade_id}}>
+            <td>{{this.trade_id}}</td>
+            <td>{{this.vault_id}}</td>
+            <td>{{this.resource_id}}</td>
+            <td>{{this.resource_amount}}</td>
+            <td>{{this.crop_id}}</td>
+            <td>{{this.crop_amount}}</td>
+            <td>{{this.trade_date}}</td>
+            <td>{{this.status}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- /views/trades.hbs -->
+<div class="form">
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Trade</h2>
+<p>To add a new trade, please enter the trade request information below and click 'Submit'!</p>
+
+<form id="add-trades-form-ajax">
+    <label for="input-vault-id">Trading Partner: </label>
+    <select name="input-vault-id" id="input-vault-id">
+        <option value=""></option>
+        {{#each vaults}}
+        <option value="{{this.vault_id}}">{{this.location}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-resource-id">Resource: </label>
+    <select name="input-resource-id" id="input-resource-id">
+        <option value=""></option>
+        {{#each resources}}
+        <option value="{{this.resource_id}}">{{this.resource_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-resource-amount">Resource Amount: </label>
+    <input type="number" name="input-resource-amount" id="input-resource-amount" min="0" required placeholder="Enter Resource Amount">
+
+    <label for="input-crop-id">Crop: </label>
+    <select name="input-crop-id" id="input-crop-id">
+        <option value=""></option>
+        {{#each crops}}
+        <option value="{{this.crop_id}}">{{this.crop_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-crop-amount">Crop Amount: </label>
+    <input type="number" name="input-crop-amount" id="input-crop-amount" min="0" required placeholder="Enter Crop Amount">
+
+    <label for="input-trade-date">Trade Date: </label>
+    <input type="date" name="input-trade-date" id="input-trade-date" required placeholder="Enter trade date">
+    
+    <label for="input-status">Trade Status: </label>
+    <select name="input-status" id="input-status">
+        <option value="0">0 - Pending</option>
+        <option value="1">1 - Completed</option>
+        <option value="2">2 - Denied</option>
+    </select>
+
+    <input type="submit">
+</form>
+</div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_trades.js"></script>
+
+<div class="form">
+{{!-- Update Trades --}}
+<h2>Updating Trades Form</h2>
+<p>To update a specific trade and the request information, select the Trade ID from the drop-down menu on the left and update the desired fields.</p>
+<form id="update-trades-form-ajax">
+
+    <label for="input-trade-update">Trade ID:</label>
+    <select name="input-trade-update" id="input-trade-update">
+        <option value=""></option>
+        {{#each data}}
+        <option value="{{this.trade_id}}">{{this.trade_id}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-vault-id-update">Trading Partner: </label>
+    <select name="input-vault-id-update" id="input-vault-id-update">
+        <option value=""></option>
+        {{#each vaults}}
+        <option value="{{this.vault_id}}">{{this.location}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-resource-id-update">Resource: </label>
+    <select name="input-resource-id-update" id="input-resource-id-update">
+        <option value=""></option>
+        {{#each resources}}
+        <option value="{{this.resource_id}}">{{this.resource_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-resource-amount-update">Resource Amount: </label>
+    <input type="number" name="input-resource-amount-update" id="input-resource-amount-update" min="0" required placeholder="Enter Resource Amount">
+
+    <label for="input-crop-id-update">Crop: </label>
+    <select name="input-crop-id-update" id="input-crop-id-update">
+        <option value=""></option>
+        {{#each crops}}
+        <option value="{{this.crop_id}}">{{this.crop_name}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-crop-amount-update">Crop Amount: </label>
+    <input type="number" name="input-crop-amount-update" id="input-crop-amount-update" min="0" required placeholder="Enter Crop Amount">
+
+    <label for="input-trade-date-update">Trade Date: </label>
+    <input type="date" name="input-trade-date-update" id="input-trade-date-update" required placeholder="Enter trade date">
+    
+    <label for="input-status-update">Trade Status: </label>
+    <select name="input-status-update" id="input-status-update">
+        <option value="0">0 - Pending</option>
+        <option value="1">1 - Completed</option>
+        <option value="2">2 - Denied</option>
+    </select>
+
+    <input type="submit">
+
+</form>
+</div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/update_trades.js"></script>
+<footer>&copy; 2024 Vault 100 Crop Trading Management System. Team Centurions</footer>
+</body>
+</html>
+
