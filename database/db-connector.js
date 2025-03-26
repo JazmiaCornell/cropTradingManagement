@@ -1,4 +1,8 @@
 var mysql = require("mysql2");
+const fs = require("fs");
+
+// Read the query file
+const query = fs.readFileSync("./database/DDL.sql", "utf8");
 
 var pool = mysql.createPool({
   host: process.env.MYSQLHOST,
