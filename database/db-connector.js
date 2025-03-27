@@ -20,20 +20,7 @@ pool.getConnection((err, connection) => {
   }
 
   console.log("Connected to MySQL database.");
-
-  // Execute the query from the file
-  connection.query(query, (err, results) => {
-    if (err) {
-      console.error("Error executing query:", err.message);
-    } else {
-      console.log("Query executed successfully:", results);
-    }
-
-    // Release the connection back to the pool
-    connection.release();
-  }); 
   
-
 });
 
 module.exports.pool = pool;
